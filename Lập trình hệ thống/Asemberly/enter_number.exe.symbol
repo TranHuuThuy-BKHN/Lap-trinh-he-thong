@@ -1,0 +1,18 @@
+< THE SYMBOL TABLE >  enter_number.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+MEG                      	00000     	1         	VAR       	data      
+MEG_PRINT                	00015     	1         	VAR       	data      
+CODE                     	00012     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+INPUT                    	00010     	-1        	LABEL     	code      
+NEXT                     	00036     	-1        	LABEL     	code      
+PUSH_STACK               	00039     	-1        	LABEL     	code      
+PRINT                    	00051     	-1        	LABEL     	code      
+===================================================================================================
+[ 11/9/2019  --  11:18:26 AM ] 
+< END >
+ 

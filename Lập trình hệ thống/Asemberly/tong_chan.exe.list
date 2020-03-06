@@ -1,0 +1,119 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+tong_chan.exe -- emu8086 assembler version: 4.08  
+ 
+[ 11/9/2019  --  1:00:56 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       ;.386
+[   3]        :                                       
+[   4]        :                                       .stack 100h
+[   5]        :                                       
+[   6]        :                                       .data
+[   7]    0100: 0A 00 0D 00 05 00 09 00               array dw 10, 13, 5, 9
+[   8]    0108:                                       len_array = ($-array)/2
+[   9]        :                                       
+[  10]        :                                       .code
+[  11]    0110:                                       main proc
+[  12]        :                                       
+[  13]    0110: B8 10 00                              mov ax, @data
+[  14]    0113: 8E D8                                 mov ds, ax
+[  15]        :                                       
+[  16]        :                                       ;ket qua tong cac phan tu chan se duoc luu trong AX
+[  17]    0115: 33 C0                                 xor ax, ax
+[  18]    0117: 33 F6                                 xor si, si
+[  19]    0119: B9 04 00                              mov cx, len_array
+[  20]    011C: 8B D9                                 mov bx, cx
+[  21]    011E: D1 E3                                 shl bx, 1 ; nhan 2 lan bx
+[  22]        :                                       
+[  23]    0120:                                       lap:
+[  24]    0120: 3B F3                                 cmp si, bx
+[  25]    0122: 73 10                                 jae next ; si >= bx thi ket thuc lap
+[  26]        :                                       ; kiem tra phan tu array[si] la chan hay le
+[  27]    0124: 8B 14                                 mov dx, array[si]
+[  28]    0126: F7 C2 01 00                           test dx, 1
+[  29]    012A: 75 02                                 jnz incre
+[  30]    012C: 03 C2                                 add ax, dx
+[  31]    012E:                                       incre:
+[  32]    012E: 83 C6 02                              add si, 2
+[  33]    0131: E2 ED                                 loop lap
+[  34]        :                                       
+[  35]        :                                       ;day ket qua vao stack
+[  36]    0133: 50                                    push ax
+[  37]        :                                       
+[  38]    0134:                                       next:
+[  39]    0134: B7 0A                                 mov bh, 10
+[  40]    0136: F6 F7                                 div bh
+[  41]    0138: 41                                    inc cx
+[  42]        :                                       
+[  43]    0139: 33 D2                                 xor dx, dx
+[  44]    013B: 8A D4                                 mov dl, ah
+[  45]    013D: 52                                    push dx
+[  46]        :                                       
+[  47]    013E: 32 E4                                 xor ah, ah
+[  48]    0140: 0B C0                                 or ax, ax
+[  49]    0142: 75 F0                                 jnz next
+[  50]        :                                       
+[  51]    0144:                                       print:
+[  52]    0144: 5A                                    pop dx
+[  53]    0145: 83 CA 30                              or dx, 30h
+[  54]        :                                       
+[  55]    0148: B4 02                                 mov ah, 02h
+[  56]    014A: CD 21                                 int 21h
+[  57]    014C: E2 F6                                 loop print
+[  58]    014E: B8 00 4C CD 21                        .exit
+[  59]        :                                       
+[  60]        :                                       main endp
+[  61]        :                                       end main
+[  62]        :                                       
+[  63]        :                                       
+[  64]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 53      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: 23      -   check sum (l.byte)
+0013: 1C      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 11      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 11      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

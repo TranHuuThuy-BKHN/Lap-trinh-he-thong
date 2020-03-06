@@ -1,0 +1,40 @@
+.model small 
+;.386
+.stack 100h
+
+.data
+    meg db 'binary number :$'
+    bi_nu db 16 dup('0'), '$'
+    
+.code
+    main proc
+        mov ax, @data
+        mov ds, ax
+        
+        mov ax, 123
+        mov cx, 16
+        xor si,si 
+        
+    lap:        
+        shl ax,1
+        jnc zero
+        mov bi_nu[si], '1'
+        jmp next
+        zero:
+            mov bi_nu[si], '0'
+        next:
+             inc si 
+        loop lap 
+        
+        mov ah, 09h
+        mov dx, offset meg
+        int 21h
+        
+        mov ah, 09h
+        mov dx, offset bi_nu
+        int 21h 
+        
+        .exit
+                
+    main endp
+    end main

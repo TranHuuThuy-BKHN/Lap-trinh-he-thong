@@ -1,0 +1,98 @@
+EMU8086 GENERATED LISTING. MACHINE CODE <- SOURCE.
+ 
+number_binary_16bits.exe -- emu8086 assembler version: 4.08  
+ 
+[ 11/14/2019  --  11:04:26 PM ] 
+ 
+===================================================================================================
+[LINE]     LOC: MACHINE CODE                          SOURCE
+===================================================================================================
+ 
+[   1]        :                                       .model small
+[   2]        :                                       ;.386
+[   3]        :                                       .stack 100h
+[   4]        :                                       
+[   5]        :                                       .data
+[   6]    0100: 62 69 6E 61 72 79 20 6E 75 6D 62 65   meg db 'binary number :$'
+                72 3A 24                            
+[   7]    010F: 30 30 30 30 30 30 30 30 30 30 30 30   bi_nu db 16 dup('0'), '$'
+                30 30 30 30 24                      
+[   8]        :                                       
+[   9]        :                                       .code
+[  10]    0120:                                       main proc
+[  11]    0120: B8 10 00                              mov ax, @data
+[  12]    0123: 8E D8                                 mov ds, ax
+[  13]        :                                       
+[  14]    0125: B8 7B 00                              mov ax, 123
+[  15]    0128: B9 10 00                              mov cx, 16
+[  16]    012B: 33 F6                                 xor si,si
+[  17]        :                                       
+[  18]    012D:                                       lap:
+[  19]    012D: D1 E0                                 shl ax,1
+[  20]    012F: 73 06                                 jnc zero
+[  21]    0131: C6 44 0F 31                           mov bi_nu[si], '1'
+[  22]    0135: EB 04                                 jmp next
+[  23]    0137:                                       zero:
+[  24]    0137: C6 44 0F 30                           mov bi_nu[si], '0'
+[  25]    013B:                                       next:
+[  26]    013B: 46                                    inc si
+[  27]    013C: E2 EF                                 loop lap
+[  28]        :                                       
+[  29]    013E: B4 09                                 mov ah, 09h
+[  30]    0140: BA 00 00                              mov dx, offset meg
+[  31]    0143: CD 21                                 int 21h
+[  32]        :                                       
+[  33]    0145: B4 09                                 mov ah, 09h
+[  34]    0147: BA 0F 00                              mov dx, offset bi_nu
+[  35]    014A: CD 21                                 int 21h
+[  36]        :                                       
+[  37]    014C: B8 00 4C CD 21                        .exit
+[  38]        :                                       
+[  39]        :                                       main endp
+[  40]        :                                       end main
+[  41]        :                                       
+ 
+===================================================================================================
+ 
+EXE HEADER - bytes from 0000 to 01FF inclusive.
+
+0000: 4D      -   exe signature (M)
+0001: 5A      -   exe signature (Z)
+0002: 51      -   bytes on last page (l.byte)
+0003: 01      -   bytes on last page (h.byte)
+0004: 02      -   512 byte pages in file (l.byte)
+0005: 00      -   512 byte pages in file (h.byte)
+0006: 01      -   relocations (l.byte)
+0007: 00      -   relocations (h.byte)
+0008: 20      -   paragraphs in header (l.byte)
+0009: 00      -   paragraphs in header (h.byte)
+000A: 00      -   minimum memory (l.byte)
+000B: 00      -   minimum memory (h.byte)
+000C: FF      -   maximum memory (l.byte)
+000D: FF      -   maximum memory (h.byte)
+000E: 00      -   SS - stack segment (l.byte)
+000F: 00      -   SS - stack segment (h.byte)
+0010: 00      -   SP - stack pointer (l.byte)
+0011: 01      -   SP - stack pointer (h.byte)
+0012: A4      -   check sum (l.byte)
+0013: 30      -   check sum (h.byte)
+0014: 00      -   IP - instruction pointer (l.byte)
+0015: 00      -   IP - instruction pointer (h.byte)
+0016: 12      -   CS - code segment (l.byte)
+0017: 00      -   CS - code segment (h.byte)
+0018: 1E      -   relocation table adress (l.byte)
+0019: 00      -   relocation table adress (h.byte)
+001A: 00      -   overlay number (l.byte)
+001B: 00      -   overlay number (h.byte)
+001C: 01      -   signature (l.byte)
+001D: 00      -   signature (h.byte)
+001E: 01      -   relocation table - offset inside segment (l.byte)
+001F: 00      -   relocation table - offset inside segment (h.byte)
+0020: 12      -   relocation table - segment anchor (l.byte)
+0021: 00      -   relocation table - segment anchor (h.byte)
+0022 to 01FF  -   reserved relocation area  (00) 
+
+
+
+
+===================================================================================================

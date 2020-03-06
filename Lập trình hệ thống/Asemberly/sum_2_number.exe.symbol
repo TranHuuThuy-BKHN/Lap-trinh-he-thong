@@ -1,0 +1,23 @@
+< THE SYMBOL TABLE >  sum_2_number.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+MEG1                     	00000     	1         	VAR       	data      
+MEG2                     	00010     	1         	VAR       	data      
+MEG3                     	00022     	1         	VAR       	data      
+NUMBER1                  	00029     	2         	VAR       	data      
+NUMBER2                  	0002B     	2         	VAR       	data      
+CODE                     	00013     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+SCANF1                   	0000E     	-1        	LABEL     	code      
+NEXT1                    	00036     	-1        	LABEL     	code      
+SCANF2                   	00043     	-1        	LABEL     	code      
+NEXT2                    	0006B     	-1        	LABEL     	code      
+PUSH_PRINTF              	0007F     	-1        	LABEL     	code      
+PRINTF                   	0008F     	-1        	LABEL     	code      
+===================================================================================================
+[ 12/26/2019  --  3:41:35 PM ] 
+< END >
+ 

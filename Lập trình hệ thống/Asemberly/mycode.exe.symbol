@@ -1,0 +1,17 @@
+< THE SYMBOL TABLE >  mycode.exe  --  emu8086 assembler version: 4.08 
+===================================================================================================
+Name                     	Offset    	Size      	Type      	Segment   
+===================================================================================================
+STACK                    	00000     	-5        	SEGMENT   	(ITSELF)  
+DATA                     	00010     	-5        	SEGMENT   	(ITSELF)  
+NUMBER                   	00000     	2         	VAR       	data      
+_LOCATION_COUNTER__N1_L8 	00042     	-1        	LABEL     	data      
+CODE                     	00015     	-5        	SEGMENT   	(ITSELF)  
+MAIN                     	00000     	-1        	NEAR      	code      
+LAP                      	0000A     	-1        	LABEL     	code      
+COMP                     	00014     	-1        	LABEL     	code      
+WRITE                    	00028     	-1        	LABEL     	code      
+===================================================================================================
+[ 11/8/2019  --  7:44:38 PM ] 
+< END >
+ 
